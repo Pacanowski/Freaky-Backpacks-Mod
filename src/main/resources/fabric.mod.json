@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "freakyplecaki",
+	"version": "${version}",
+	"name": "Freaky Plecaki",
+	"description": "Dodalem plecaki bo nie bylo zadnego moda na ta wersje ktory nie wybuchal",
+	"authors": [
+		"Penetrator"
+	],
+	"contact": {
+		"homepage": "https://open.spotify.com/playlist/7lpJ0uioKs8Fy0aUbzp1eF?si=8a747c09318f4dbf",
+		"sources": "https://open.spotify.com/playlist/7lpJ0uioKs8Fy0aUbzp1eF?si=8a747c09318f4dbf"
+	},
+	"license": "MIT",
+	"icon": "assets/freakyplecaki/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.penetrator.freakyplecaki.FreakyPlecaki"
+		],
+		"fabric-datagen": [
+			"net.penetrator.freakyplecaki.FreakyPlecakiDataGenerator"
+		],
+        "client": [
+          "net.penetrator.freakyplecaki.FreakyPlecakiClient"
+        ]
+	},
+	"mixins": [
+		"freakyplecaki.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.10",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
