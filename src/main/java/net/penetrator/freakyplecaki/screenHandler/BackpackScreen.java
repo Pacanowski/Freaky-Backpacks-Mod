@@ -22,16 +22,10 @@ public class BackpackScreen extends HandledScreen<BackpackScreenHandler> {
     }
 
     @Override
-    protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-        context.drawGuiTexture(
-                RenderPipelines.GUI,
-                Identifier.of(FreakyPlecaki.MOD_ID, "gui/backpack"),
-                this.x, this.y,
-                this.backgroundWidth,
-                this.backgroundHeight
-        );
-    }
+    protected void drawBackground(DrawContext context, float deltaTicks, int mouseX, int mouseY) {
+        context.drawTexture(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight, 176, 166);
 
+    }
 
 
 }

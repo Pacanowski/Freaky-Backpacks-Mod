@@ -25,7 +25,6 @@ public class BackpackItem extends Item {
 
         ContainerComponent container = stack.get(DataComponentTypes.CONTAINER);
         if (container != null) {
-            // fills the list with the stored items
             container.copyTo(items);
         }
 
@@ -33,14 +32,12 @@ public class BackpackItem extends Item {
     }
 
     public static void saveInventory(ItemStack stack, DefaultedList<ItemStack> items) {
-        // create a container component from the list and attach it to the stack
         ContainerComponent container = ContainerComponent.fromStacks(items);
         stack.set(DataComponentTypes.CONTAINER, container);
     }
 
     @Override
     public ActionResult use(World world, PlayerEntity player, Hand hand) {
-        ItemStack stack = player.getStackInHand(hand);
 
         if (!world.isClient()) {
             player.openHandledScreen(new SimpleNamedScreenHandlerFactory(

@@ -13,7 +13,7 @@ public class ModItemGroups {
     public static final ItemGroup BACKPACKS = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(FreakyPlecaki.MOD_ID, "backpacks"),
             FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.BACKPACK))
-                    .displayName(Text.of("Freaky Plecaki"))
+                    .displayName(Text.of("Backpacks"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.BACKPACK);
 

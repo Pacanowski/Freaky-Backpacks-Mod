@@ -18,13 +18,8 @@ public class BackpackScreenHandler extends ScreenHandler {
     public BackpackScreenHandler(int syncId, PlayerInventory playerInventory) {
         super(ModScreenHandlers.BACKPACK, syncId);
 
-        // The backpack item the player is holding
         this.backpackStack = playerInventory.getSelectedStack();
-
-        // Load stored items from the backpack's data component
         this.items = BackpackItem.getInventory(backpackStack);
-
-        // Create an Inventory that directly uses the DefaultedList
         this.inv = new Inventory() {
 
             @Override
@@ -86,19 +81,21 @@ public class BackpackScreenHandler extends ScreenHandler {
             }
         };
 
-        // -------------------------
-        // BACKPACK SLOTS (27 slots)
-        // -------------------------
+        // Backpack
         int index = 0;
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
-                this.addSlot(new Slot(inv, index++, 8 + col * 18, 18 + row * 18));
+                this.addSlot(new Slot(inv, index++, 8 + col * 18, 18 + row * 18) {
+                    @Override
+                    public boolean canInsert(ItemStack stack) {
+                        return !(stack.getItem() instanceof BackpackItem);
+                    }
+                });
+
             }
         }
 
-        // -------------------------
-        // PLAYER INVENTORY (27 slots)
-        // -------------------------
+        //Inventory
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
                 this.addSlot(new Slot(playerInventory, col + row * 9 + 9,
@@ -106,9 +103,7 @@ public class BackpackScreenHandler extends ScreenHandler {
             }
         }
 
-        // -------------------------
-        // HOTBAR (9 slots)
-        // -------------------------
+        //Hotbar
         for (int col = 0; col < 9; col++) {
             this.addSlot(new Slot(playerInventory, col, 8 + col * 18, 142));
         }
@@ -121,7 +116,6 @@ public class BackpackScreenHandler extends ScreenHandler {
 
     @Override
     public ItemStack quickMove(PlayerEntity player, int slotIndex) {
-        // Optional: implement shift-click behavior later
         return ItemStack.EMPTY;
     }
 }
